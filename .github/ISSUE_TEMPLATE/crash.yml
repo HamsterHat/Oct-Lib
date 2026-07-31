@@ -72,7 +72,7 @@ body:
       description: Attach logs from Settings -> Game Data -> Export Crash Logs if the game crashed.
       placeholder: Paste log contents or attach the text file.
     validations:
-      required: false
+       required: false
 
   - type: checkboxes
     id: agreement
@@ -86,4 +86,3 @@ body:
           required: true
         - label: I am sure this bug is caused by OctLib and not other mods.
           required: true
-
