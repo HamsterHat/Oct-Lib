@@ -59,9 +59,24 @@
 
 ### TempGenerator: 
 
-`type: TempGenerator` a generator that outputs power and slowly decharges
+`type: TempGenerator` a generator that produces power and slowly discharges over time
 
 `startingGeneration` starting power generation
 
-`decreaseAmount` amout by this decresaed generation
+`decreaseAmount` the amount by which power generation decreases each update
+
+
+
+
+### UnderwaterUnitType
+
+#### to use:
+
+add to your unit file
+this `template: UnderwaterUnitType`
+and remove `type`
+
+
+
+#### TODO BlackHoleBulletType
 
