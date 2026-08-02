@@ -1,7 +1,0 @@
-displayName: "yourMod"
-name: "yourMod"
-author: "you"
-description: "yes"
-version: 1.0
-minGameVersion: 150.1
-dependencies: [hjsonpp]
