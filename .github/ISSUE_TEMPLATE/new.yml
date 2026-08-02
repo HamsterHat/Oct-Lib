@@ -1,0 +1,74 @@
+name: Feature Request / Suggestion
+description: Suggest a new custom class, bullet, block, or feature for Oct-Lib.
+labels: ["enhancement", "suggestion"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🌌 Предложить идею в Oct-Lib
+        Спасибо, что решили поделиться идеей! Пожалуйста, опишите ваш концепт как можно подробнее.
+
+  - type: input
+    id: feature-title
+    attributes:
+      label: Feature Name
+      description: Give a short, clear name for your idea (e.g., "ChainLightningBulletType" or "ReflectiveWall").
+      placeholder: E.g., CustomShieldAbility
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Category
+      description: What type of custom content is this?
+      options:
+        - Bullet Type
+        - Block Type
+        - Ability Type
+        - Status Effect
+        - Mechanics / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Concept Description
+      description: Explain in detail how this feature should work in the game.
+      placeholder: Describe the gameplay mechanics, mechanics, logic, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: fields
+    attributes:
+      label: HJSON Fields (Parameters)
+      description: List the custom fields/variables that JSON modders should be able to configure.
+      placeholder: |
+        E.g.:
+        public float bounceChance = 0.5f;
+        public int maxBounces = 3;
+    validations:
+      required: false
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Why is this needed?
+      description: Explain how this feature will help other HJSON modders or why it's cool.
+      placeholder: It allows creating unique plasma weapons without hardcoding Java...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Final Checks
+      description: Confirm the conditions below.
+      options:
+        - label: I am sure this feature does not exist in vanila Mindustry.
+          required: true
+        - label: This idea is realistic and optimized (won't cause massive lag).
+          required: true
