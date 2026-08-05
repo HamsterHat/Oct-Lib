@@ -7,7 +7,7 @@ import octlib.expand.entities.units.UnderwaterUnitType;
 import mindustry.game.EventType;
 import mindustry.mod.*;
 import octlib.expand.ui.*;
-import octlib.world.blocks.campaign.RocketControlCenter;
+import octlib.expand.blocks.campaign.RocketControlCenter;
 
 import static arc.Core.app;
 

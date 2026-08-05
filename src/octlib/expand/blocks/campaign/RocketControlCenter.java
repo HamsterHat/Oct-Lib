@@ -178,7 +178,7 @@ public class RocketControlCenter extends PayloadBlock {
                             Vars.universe.clearLoadoutInfo();
                             Vars.universe.updateLoadout((CoreBlock)launchBlock);
 
-                            Vars.control.playSector(sector);
+                            Vars.control.playSector(sector.sector);
                         });
                     }, targetName, targetDesc);
                 }
