@@ -8,6 +8,7 @@ import mindustry.game.EventType;
 import mindustry.mod.*;
 import octlib.expand.ui.*;
 import octlib.expand.blocks.campaign.RocketControlCenter;
+import octlib.expand.blocks.campaign.RocketLaunchPad;
 
 import static arc.Core.app;
 
@@ -22,6 +23,8 @@ public class OctLib extends Mod{
         ClassMap.classes.put("BlackHoleBulletType", BlackHoleBulletType.class);
         ClassMap.classes.put("QuantumReactor", QuantumReactor.class);
         ClassMap.classes.put("UnderwaterUnitType", UnderwaterUnitType.class);
+        ClassMap.classes.put("RocketControlCenter", RocketControlCenter.class);
+        ClassMap.classes.put("RocketLaunchPad", RocketLaunchPad.class);
     }
 
     /*@Override
