@@ -16,7 +16,9 @@ import mindustry.world.blocks.payloads.*;
 
 import static arc.graphics.g2d.Draw.*;
 
-public class CDFx {
+
+//Code by Nullotte
+public class OctoFx {
     public static Effect
     rocketMerge = new Effect(60f, e -> {
         if (!(e.data instanceof RocketControlCenterBuild build)) return;
