@@ -6,10 +6,13 @@ import octlib.expand.entities.bullets.BlackHoleBulletType;
 import octlib.expand.entities.units.UnderwaterUnitType;
 import mindustry.game.EventType;
 import mindustry.mod.*;
+import octlib.expand.ui.*;
+import octlib.world.blocks.campaign.RocketControlCenter;
 
 import static arc.Core.app;
 
 public class OctLib extends Mod{
+    public static RocketLaunchDialog rocketLaunch;
 
     public OctLib(){
         /*Events.on(EventType.FileTreeInitEvent.class, e ->
