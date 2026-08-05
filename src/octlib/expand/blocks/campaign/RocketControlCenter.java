@@ -1,4 +1,4 @@
-package octlib.world.blocks.campaign;
+package octlib.expand.blocks.campaign;
 
 import arc.*;
 import arc.Graphics.*;
@@ -26,9 +26,12 @@ import mindustry.graphics.*;
 import mindustry.ui.*;
 import mindustry.world.*;
 import mindustry.world.blocks.*;
+import mindustry.world.blocks.campaign.*;
 import mindustry.world.blocks.payloads.*;
 import mindustry.world.blocks.storage.*;
 import mindustry.world.meta.*;
+import mindustry.type.SectorPreset;
+
 
 //Code by Nullotte
 public class RocketControlCenter extends PayloadBlock {
