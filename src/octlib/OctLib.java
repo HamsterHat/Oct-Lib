@@ -2,7 +2,7 @@ package octlib;
 
 import arc.Events;
 import octlib.expand.blocks.energy.*;
-import octlib.expand.entities.bullets.BlackHoleBulletType;
+import octlib.expand.entities.bullets.*;
 import octlib.expand.entities.units.UnderwaterUnitType;
 import mindustry.game.EventType;
 import mindustry.mod.*;
@@ -21,6 +21,7 @@ public class OctLib extends Mod{
         );*/
         ClassMap.classes.put("TempGenerator", TempGenerator.class);
         ClassMap.classes.put("BlackHoleBulletType", BlackHoleBulletType.class);
+        ClassMap.classes.put("AdvancedArtilleryBulletType", AdvancedArtilleryBulletType.class);
         ClassMap.classes.put("QuantumReactor", QuantumReactor.class);
         ClassMap.classes.put("UnderwaterUnitType", UnderwaterUnitType.class);
         ClassMap.classes.put("RocketControlCenter", RocketControlCenter.class);

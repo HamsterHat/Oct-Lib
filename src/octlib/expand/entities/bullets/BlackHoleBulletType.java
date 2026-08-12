@@ -69,59 +69,20 @@ public class BlackHoleBulletType extends BulletType {
 
     @Override
     public void draw(Bullet b){
-        float z = Draw.z();
-        if(layer > 0) Draw.z(layer);
-
         drawParts(b);
         drawTrail(b);
-
         float px = b.x, py = b.y;
-        float prog = fout(b);
-        
-        float horizonRad = eventHorizonRadius * prog;
-        float outerDiskRad = (eventHorizonRadius + offset + accretionDiskWidth) * prog;
-
-        float glowScale = 1f + Mathf.absin(Time.time, 8f, 0.08f);
+        float prog =  fout(b);
+        float diskRad = (eventHorizonRadius) * prog;
+        float z = Draw.z();
+        if(layer > 0) Draw.z(layer);
         Draw.color(accretionDiskColor);
-        Draw.alpha(0.25f * prog);
-        Fill.circle(px, py, outerDiskRad * 1.4f * glowScale);
-
-        int segments = 32;
-        float rotation = b.time * 1.5f;
-        float diskBaseRad = horizonRad + offset;
-
-        for(int i = 0; i < 3; i++){
-            float layerOffset = i * (accretionDiskWidth / 3f);
-            float alphaMult = 1f - (i / 3f);
-            
-            Draw.color(accretionDiskColor);
-            Draw.alpha(alphaMult * (0.4f + Mathf.absin(Time.time + i * 10, 5f, 0.3f)) * prog);
-            Lines.stroke((accretionDiskWidth / 3f) * prog);
-            
-            Lines.poly(px, py, segments, diskBaseRad + layerOffset, rotation * (1f + i * 0.2f));
-        }
-
-        Draw.z(Math.max(layer, 120f));
+        Lines.stroke(accretionDiskWidth);
+        Lines.circle(px, py, diskRad);
+        Draw.z(120);
         Draw.color(Color.black);
-        Fill.circle(px, py, horizonRad);
-        Fill.circle(px, py, horizonRad * 0.85f);
-
-        Draw.color(accretionDiskColor);
-        Draw.alpha(0.7f * prog);
-        
-        float rectWidth = outerDiskRad * 2.2f;
-        float rectHeight = accretionDiskWidth * 1.2f * prog;
-        
-        Fill.rect(px, py + (offset * 0.2f), rectWidth, rectHeight);
-
-        Draw.alpha(0.4f * prog);
-        Fill.rect(px, py + (offset * 0.2f), rectWidth * 0.8f, rectHeight * 1.5f);
-
-        Draw.reset();
-        Draw.z(z);
+        Fill.circle(px, py, eventHorizonRadius * prog);
     }
-
-
 
     public float fout(Bullet b){
         return Interp.sineOut.apply(
