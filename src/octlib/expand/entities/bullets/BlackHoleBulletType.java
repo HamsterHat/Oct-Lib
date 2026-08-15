@@ -57,15 +57,34 @@ public class BlackHoleBulletType extends BulletType {
 
     @Override
     public void update(Bullet b){
-
-        if(updateEffect != null && Mathf.chance(updateEffectChance)  && (updateEffectTime == -1 || b.time < updateEffectTime)) {
+        if(updateEffect != null && Mathf.chance(updateEffectChance) && (updateEffectTime == -1 || b.time < updateEffectTime)) {
             updateEffect.at(b.x, b.y, b.rotation());
         }
+    
         if(b.timer(1, damageInterval)){
             Effect.shake(shake, shake, b.x, b.y);
-            blackHoleUpdate(b.team, b, factorRadius, Math.max(pullStrength, pullStrength * Time.delta), Math.max(damage, damage * Time.delta), armorMultiplier, damageMultiplier(b), buildingDamageMultiplier);
+    
+    
+            BlackHoleUtils.blackHoleUpdate(
+                b.team,
+                b,
+                0f,
+                0f,
+                factorRadius,
+                suctionRadius,
+                damage,
+                armorMultiplier == -1,
+                buildingDamageMultiplier,
+                bulletDamage,
+                repel,
+                pullStrength,
+                scaledForce,
+                bulletForce,
+                scaledBulletForce
+            );
         }
     }
+    
 
     @Override
     public void draw(Bullet b){

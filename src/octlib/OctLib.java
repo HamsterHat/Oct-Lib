@@ -9,6 +9,8 @@ import mindustry.mod.*;
 import octlib.expand.ui.*;
 import octlib.expand.blocks.campaign.RocketControlCenter;
 import octlib.expand.blocks.campaign.RocketLaunchPad;
+import octlib.expand.blocks.effect.*;
+import octlib.expand.draw.*;
 
 import static arc.Core.app;
 
@@ -26,6 +28,8 @@ public class OctLib extends Mod{
         ClassMap.classes.put("UnderwaterUnitType", UnderwaterUnitType.class);
         ClassMap.classes.put("RocketControlCenter", RocketControlCenter.class);
         ClassMap.classes.put("RocketLaunchPad", RocketLaunchPad.class);
+        ClassMap.classes.put("BombBlock", BombBlock.class);
+        ClassMap.classes.put("DrawNormalTurret", DrawNormalTurret.class);
     }
 
     /*@Override
