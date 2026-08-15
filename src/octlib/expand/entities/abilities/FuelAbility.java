@@ -26,6 +26,10 @@ public class FuelAbility extends Ability {
 
     protected float resupplyTimer;
 
+    public FuelAbility() {
+    
+    }
+
     public FuelAbility(float powerCapacity) {
         this.powerCapacity = powerCapacity;
     }
