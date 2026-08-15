@@ -5,6 +5,7 @@ import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.struct.*;
 import arc.util.io.*;
+import arc.audio.*;
 import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.gen.*;
@@ -21,7 +22,6 @@ import mindustry.world.blocks.distribution.Conveyor;
 
 import mindustry.Vars;
 
-import betamindy.content.*;
 
 import static mindustry.Vars.tilesize;
 

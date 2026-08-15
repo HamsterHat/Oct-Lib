@@ -13,6 +13,8 @@ import mindustry.entities.bullet.BulletType;
 import mindustry.entities.part.DrawPart;
 import mindustry.gen.Bullet;
 
+import static octlib.BlackHoleUtils.*;
+
 import static octlib.HppUtilities.*;
 
 public class BlackHoleBulletType extends BulletType {
@@ -33,6 +35,13 @@ public class BlackHoleBulletType extends BulletType {
     public Effect updateEffect;
     public float updateEffectChance = 0.75f;
     public float updateEffectTime = -1;
+    public float suctionRadius = 120f;
+    public float bulletDamage = 10f;
+    public boolean repel = false;
+    public float scaledForce = 2f;
+    public float bulletForce = 1.5f;
+    public float scaledBulletForce = 1f;
+    
 
     public BlackHoleBulletType(float speed, float damage){
         super(speed, damage);
@@ -65,7 +74,7 @@ public class BlackHoleBulletType extends BulletType {
             Effect.shake(shake, shake, b.x, b.y);
     
     
-            BlackHoleUtils.blackHoleUpdate(
+            blackHoleUpdate(
                 b.team,
                 b,
                 0f,
