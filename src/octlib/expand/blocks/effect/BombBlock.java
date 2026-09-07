@@ -115,7 +115,6 @@ public class BombBlock extends Block {
                 if(fireEffect != Fx.none && Mathf.chance(fireChance)) fireEffect.at(x + Mathf.range(size * tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
                 if(heat <= 0f) kill();
             }
-            else if(canConsume() || tile.floor().attributes.get(Attribute.heat) > 0.01) light();
         }
 
         public void light(){
