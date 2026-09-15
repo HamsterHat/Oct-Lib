@@ -32,13 +32,13 @@ public class InfinityAbility extends Ability {
 
         Groups.bullet.intersect(unit.x - range, unit.y - range, range * 2, range * 2, bullet -> {
             if (bullet.team != unit.team && bullet.within(unit, range)) {
-                bullet.vel.mul(infinityMultiplier * Time.delta);
+                bullet.vel.scl(infinityMultiplier * Time.delta);
             }
         });
 
         Groups.unit.intersect(unit.x - range, unit.y - range, range * 2, range * 2, other -> {
             if (other.team != unit.team && other instanceof TimedKillUnit && other.within(unit, range)) {
-                other.vel.mul(infinityMultiplier * Time.delta);
+                other.vel.scl(infinityMultiplier * Time.delta);
             }
         });
     }
