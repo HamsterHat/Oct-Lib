@@ -32,6 +32,7 @@ public class OctLib extends Mod{
         ClassMap.classes.put("BombBlock", BombBlock.class);
         ClassMap.classes.put("DrawNormalTurret", DrawNormalTurret.class);
         ClassMap.classes.put("FuelAbility", FuelAbility.class);
+        ClassMap.classes.put("InfinityAbility", InfinityAbility.class);
     }
 
     /*@Override
