@@ -6,22 +6,23 @@ import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
 import arc.math.Mathf;
+import arc.math.geom.Vec2;
 import mindustry.gen.Groups;
-import mindustry.gen.TimedKillUnit;
 import mindustry.gen.Unit;
 import mindustry.entities.abilities.Ability;
 
 
 public class InfinityAbility extends Ability {
     public float range = 160f;
-    public float infinityMultiplier = 0.1f;
+    public float pushForce = 4.5f;
+    
+    private static final Vec2 tmpVec = new Vec2();
 
-    public InfinityAbility() {
-    }
+    public InfinityAbility() {}
 
-    public InfinityAbility(float range, float infinityMultiplier) {
+    public InfinityAbility(float range, float pushForce) {
         this.range = range;
-        this.infinityMultiplier = infinityMultiplier;
+        this.pushForce = pushForce;
     }
 
 
@@ -32,15 +33,59 @@ public class InfinityAbility extends Ability {
 
         Groups.bullet.intersect(unit.x - range, unit.y - range, range * 2, range * 2, bullet -> {
             if (bullet.team != unit.team && bullet.within(unit, range)) {
-                bullet.vel.scl(infinityMultiplier * Time.delta);
+                float dst = bullet.dst(unit);
+                if (dst <= 0.1f) return;
+
+                float proximityFactor = 1.0f - (dst / range);
+
+
+                tmpVec.set(bullet.x - unit.x, bullet.y - unit.y).nor();
+
+                bullet.team = unit.team;
+
+                bullet.vel.set(tmpVec).scl(bulletPushForce * (1.0f + proximityFactor * 2f) * Time.delta);
+                
+                bullet.time -= 0.2f * Time.delta;
             }
         });
 
         Groups.unit.intersect(unit.x - range, unit.y - range, range * 2, range * 2, other -> {
-            if (other.team != unit.team && other instanceof TimedKillUnit && other.within(unit, range)) {
-                other.vel.scl(infinityMultiplier * Time.delta);
+
+            if (other.team != unit.team && !other.dead && other.within(unit, range)) {
+                
+                float dst = other.dst(unit);
+                if (dst <= 0.1f) return;
+
+
+                float proximityFactor = 1.0f - (dst / range);
+
+
+                tmpVec.set(other.x - unit.x, other.y - unit.y).nor();
+
+                other.vel.set(tmpVec).scl(pushForce * proximityFactor * Time.delta);
+                
+
+                if (dst < 35f) {
+                    other.vel.add(tmpVec.scl(pushForce * 2f));
+                }
             }
         });
     }
 
+    @Override
+    public void draw(Unit unit) {
+        Draw.color(Color.purple, Color.rgba8888(130, 50, 250, 255), Mathf.absin(Time.time, 8f, 0.3f));
+        Lines.stroke(1.2f);
+        
+        Lines.circle(unit.x, unit.y, range);
+        
+        for (int i = 1; i <= 3; i++) {
+            float sizeFactor = (Time.time * 0.02f + (i / 3f)) % 1f;
+            Lines.circle(unit.x, unit.y, range * sizeFactor);
+        }
+        
+        Draw.alpha(0.02f);
+        Fill.circle(unit.x, unit.y, range);
+        Draw.reset();
+    }
 }
