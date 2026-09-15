@@ -43,7 +43,7 @@ public class InfinityAbility extends Ability {
 
                 bullet.team = unit.team;
 
-                bullet.vel.set(tmpVec).scl(bulletPushForce * (1.0f + proximityFactor * 2f) * Time.delta);
+                bullet.vel.set(tmpVec).scl(pushForce * (1.0f + proximityFactor * 2f) * Time.delta);
                 
                 bullet.time -= 0.2f * Time.delta;
             }
@@ -74,18 +74,21 @@ public class InfinityAbility extends Ability {
 
     @Override
     public void draw(Unit unit) {
-        Draw.color(Color.purple, Color.rgba8888(130, 50, 250, 255), Mathf.absin(Time.time, 8f, 0.3f));
-        Lines.stroke(1.2f);
+        Color customPurple = Color.valueOf("8232fa");
+        
+        Draw.color(Color.purple, customPurple, Mathf.absin(Time.time, 6f, 0.4f));
+        Lines.stroke(1.5f);
         
         Lines.circle(unit.x, unit.y, range);
         
-        for (int i = 1; i <= 3; i++) {
-            float sizeFactor = (Time.time * 0.02f + (i / 3f)) % 1f;
-            Lines.circle(unit.x, unit.y, range * sizeFactor);
+        for (int i = 1; i <= 4; i++) {
+            float sizeFactor = (Time.time * 0.015f + (i / 4f)) % 1f;
+            Lines.circle(unit.x, unit.y, range * (1f - sizeFactor));
         }
         
-        Draw.alpha(0.02f);
+        Draw.alpha(0.03f);
         Fill.circle(unit.x, unit.y, range);
         Draw.reset();
     }
+
 }
