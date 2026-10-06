@@ -12,6 +12,7 @@ import octlib.expand.blocks.campaign.RocketLaunchPad;
 import octlib.expand.blocks.effect.*;
 import octlib.expand.draw.*;
 import octlib.expand.entities.abilities.*;
+import octlib.expand.blocks.defence.*;
 
 import static arc.Core.app;
 
@@ -33,6 +34,8 @@ public class OctLib extends Mod{
         ClassMap.classes.put("DrawNormalTurret", DrawNormalTurret.class);
         ClassMap.classes.put("FuelAbility", FuelAbility.class);
         ClassMap.classes.put("InfinityAbility", InfinityAbility.class);
+        ClassMap.classes.put("ModeTurret", ModeTurret.class);
+        ClassMap.classes.put("OverheatTurret", OverheatTurret.class);
     }
 
     /*@Override
