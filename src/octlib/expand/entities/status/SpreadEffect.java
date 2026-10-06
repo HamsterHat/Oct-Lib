@@ -4,12 +4,12 @@ import mindustry.content.Fx;
 import mindustry.entities.Effect;
 import mindustry.entities.Units;
 import mindustry.gen.Unit;
-import mindustry.graphics.Pal;
 import mindustry.type.StatusEffect;
+import mindustry.entities.units.StatusEntry;
 
 public class SpreadEffect extends StatusEffect {
-    public float spreadRadius = 5;
-    public float spreadInterval = 60;
+    public float spreadRadius = 5f;
+    public float spreadInterval = 60f;
     public boolean spreadSingle = true;
     public Effect spreadEffect = Fx.plasticburn;
     public boolean spreadAllies = true;
@@ -20,35 +20,31 @@ public class SpreadEffect extends StatusEffect {
     }
 
     @Override
-    public void update(Unit unit, float time){
-        super.update(unit, time);
+    public void update(Unit unit, StatusEntry entry) {
+        super.update(unit, entry);
         
-        if(time % spreadInterval < 1){
-            final float nextTime = time * 0.9f;
+        if (entry.time % spreadInterval < 1f) {
+            final float nextTime = entry.time * 0.9f;
 
-            if(spreadSingle){
+            if (spreadSingle) {
                 Unit u = Units.closest(null, unit.x, unit.y, unit.hitSize + spreadRadius, un -> {
-                    if(un == unit) return false;
-                    
+                    if (un == unit) return false;
                     boolean isAlly = (un.team == unit.team);
-                    if(isAlly && !spreadAllies) return false;
-                    if(!isAlly && !spreadEnemies) return false;
-
+                    if (isAlly && !spreadAllies) return false;
+                    if (!isAlly && !spreadEnemies) return false;
                     return !un.isImmune(this) && !un.hasEffect(this);
                 });
                 
-                if(u != null){
+                if (u != null) {
                     u.apply(this, nextTime);
                     spreadEffect.at(u.x, u.y, unit.angleTo(u.x, u.y));
                 }
-            }
-            else {
+            } else {
                 Units.nearby(null, unit.x, unit.y, unit.hitSize + spreadRadius, u -> {
-                    if(u == unit) return;
-
+                    if (u == unit) return;
                     boolean isAlly = (u.team == unit.team);
-                    if(isAlly && !spreadAllies) return;
-                    if(!isAlly && !spreadEnemies) return;
+                    if (isAlly && !spreadAllies) return;
+                    if (!isAlly && !spreadEnemies) return;
 
                     if (!u.isImmune(this) && !u.hasEffect(this)) {
                         u.apply(this, nextTime);
