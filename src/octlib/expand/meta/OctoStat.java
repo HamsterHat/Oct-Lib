@@ -13,5 +13,7 @@ public class OctoStat {
     reloadFrom = new Stat("reload-from", StatCat.function),
     reloadTo = new Stat("reload-from", StatCat.function),
     recipe = new Stat("mc-recipe", StatCat.crafting),
-    turretMode = new Stat("turret-modes", StatCat.function);
+    turretMode = new Stat("turret-modes", StatCat.function),
+    KR = new Stat("kr-damage", StatCat.function),
+    percentDamage = new Stat("percent-damage", StatCat.function);
 }
