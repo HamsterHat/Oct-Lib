@@ -19,7 +19,7 @@ public class KarmaEffect extends StatusEffect {
     public void update(Unit unit, StatusEntry entry) {
         super.update(unit, entry);
         
-        float calculatedDamage = unit.health * percentDamage * Time.delta;
+        float calculatedDamage = unit.maxHealth * percentDamage * Time.delta;
 
         if (unit.health <= karmaFloor || (unit.health - calculatedDamage) <= karmaFloor) {
             unit.health(karmaFloor);

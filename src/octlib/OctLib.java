@@ -14,6 +14,7 @@ import octlib.expand.draw.*;
 import octlib.expand.entities.abilities.*;
 import octlib.expand.blocks.defence.*;
 import octlib.expand.entities.status.*;
+import octlib.content.*;
 
 import static arc.Core.app;
 
@@ -37,20 +38,17 @@ public class OctLib extends Mod{
         ClassMap.classes.put("InfinityAbility", InfinityAbility.class);
         ClassMap.classes.put("ModeTurret", ModeTurret.class);
         ClassMap.classes.put("OverheatTurret", OverheatTurret.class);
-        ClassMap.classes.put("PercentEffect", PercentEffect.class);
-        ClassMap.classes.put("SpreadEffect", SpreadEffect.class);
-        ClassMap.classes.put("PercentEffect", PercentEffect.class);
-        ClassMap.classes.put("KarmaEffect", KarmaEffect.class);
     }
 
     /*@Override
     public void init(){
         super.init();
         CustomStyles.load();
-    }
+    }*/
 
     @Override
     public void loadContent(){
-        OctLibLogic.init();
-    }*/
+        // OctLibLogic.init();
+        OctoStatuses.load();
+    }
 }
